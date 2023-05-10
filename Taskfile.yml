@@ -1,0 +1,17 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  Q_VERSION:
+    sh: curl -sSL https://api.github.com/repos/easysoft/quickon_cli/releases/latest | jq -r '.name'
+
+tasks:
+  qcadmin:
+    cmds:
+      - echo "Quickon cli version:{{.Q_VERSION}}"
+      - ./genqcadmin.sh {{.Q_VERSION}}
+
+  default:
+    cmds:
+      - task: qcadmin
