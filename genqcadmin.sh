@@ -4,7 +4,7 @@ set -e
 
 tag=${1}
 [ -d /tmp/quickon ] && rm -rf /tmp/quickon || true
-git clone https://github.com/easysoft/quickon_cli /tmp/quickon
+git clone https://github.com/easysoft/quickon_cli -b master /tmp/quickon
 cp /tmp/quickon/docs/qcadmin.rb .
 git add .
 version=$(cat qcadmin.rb | grep "version " | awk -F\" '{print $2}')
